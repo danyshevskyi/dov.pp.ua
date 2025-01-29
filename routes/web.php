@@ -5,7 +5,13 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return view('index');
+});
+
+Route::get('/test', function () {
+    // return view('welcome');
+    return view('test');
 });
 
 Route::get('/dashboard', function () {
@@ -18,7 +24,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// require __DIR__.'/auth.php';
+require __DIR__.'/auth.php';
 
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
