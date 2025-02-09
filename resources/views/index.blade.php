@@ -47,13 +47,13 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                         <li class="nav-item">
-                        <a class="nav-link text-black" href="#">DOV Analytics</a>
+                        <a class="nav-link text-black" href="https://dov.pp.ua/analytics/" target=_blank>DOV Analytics</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link text-black" href="#">English Cards</a>
+                        <a class="nav-link text-black" href="https://dov.pp.ua/english-cards/" target=_blank>English Cards</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link text-black" href="#">Miles</a>
+                        <a class="nav-link text-black" href="https://dov.pp.ua/miles/" target=_blank>Miles</a>
                         </li>
                         </ul>
                     </div>
