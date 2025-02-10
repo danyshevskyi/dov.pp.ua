@@ -28,19 +28,19 @@
 <div class="container" style="max-width: 1000px">
     <div class="wrapper">
         <div class="top">
-            <div class="col py-2">
+            <div class="col py-2 1bb">
 
                 <nav class="navbar navbar-expand-lg 1bg-body-tertiary">
                 <div class="container-fluid">
 
-                    <div class="dropdown navbar-toggler border-0">
-                        <button class="btn btn-outline-black dropdown-toggle border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        My Projects
+                    <div class="dropdown navbar-toggler border-0 1bb ps-0 ms-0">
+                        <button class="btn btn-outline-black dropdown-toggle border-0 ps-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Projects
                         </button>
-                        <ul class="dropdown-menu py-3">
-                            <li><a class="dropdown-item" href="#">DOV Analytics</a></li>
-                            <li><a class="dropdown-item py-4" href="#">English Cards</a></li>
-                            <li><a class="dropdown-item" href="#">Miles</a></li>
+                        <ul class="dropdown-menu py-3 show">
+                            <li><a class="dropdown-item" href="https://dov.pp.ua/analytics/" target=_blank>DOV Analytics</a></li>
+                            <li><a class="dropdown-item py-4" href="https://dov.pp.ua/english-cards/" target=_blank>English Cards</a></li>
+                            <li><a class="dropdown-item" href="https://dov.pp.ua/miles/" target=_blank>Miles</a></li>
                         </ul>
                     </div>
 
@@ -57,7 +57,7 @@
                         </li>
                         </ul>
                     </div>
-                    <a class="me-2 text-black text-decoration-none" href='/login'>Login</a></div>
+                    <a class="me-2 text-secondary text-decoration-none" href='#'>Login</a></div>
                 </nav>
             </div>
         </div>
@@ -89,10 +89,7 @@
         <i class="bi bi-github fs-4"></i>
     </a>
        <br><br>
-       <a href="https://dov.pp.ua" class="text-decoration-none text-black 1fs-5">
-       DOV Software</a> &copy; 2025 <a href="mailto:danishevskij@gmail.com" class="text-decoration-none text-black 1fs-5">E-Mail</a>
-
-
+    <a href="mailto:danishevskij@gmail.com" class="text-decoration-none text-black 1fs-5">danishevskij@gmail.com</a>
     </div>
 </div>
 <!-- /footer -->
