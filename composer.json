@@ -12,7 +12,10 @@
         "php": "^8.2",
         "laravel/framework": "^11.31",
         "laravel/sanctum": "^4.0",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "mikecao/flight": "^2.0",
+        "kudashevs/accept-language": "^3.4",
+        "foroco/php-browser-detection": "^2.7"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
@@ -28,7 +31,9 @@
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
+            "Database\\Seeders\\": "database/seeders/",
+            "Analytics\\": "analytics/",
+            "Repo\\": "repo/"
         }
     },
     "autoload-dev": {

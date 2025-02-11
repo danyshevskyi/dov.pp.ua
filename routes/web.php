@@ -3,10 +3,16 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use Analytics\App\Models\Count;
 
 Route::get('/', function () {
     // return view('welcome');
+
+	$count = new Count('index', 'all');
+		$count->count();
+
     return view('index');
+
 });
 
 Route::get('/test', function () {
