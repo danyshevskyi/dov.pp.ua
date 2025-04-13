@@ -44,4 +44,15 @@
             </x-primary-button>
         </div>
     </form>
+    <br>
+<hr>
+<div class="mt-4 mx-auto" 1style="border: 1px solid blue;">
+<center>
+      
+<a class="1underline" href="{{ route('register') }}">
+        {{ __('Don\'t have an account?') }}
+    </a>
+</center>
+</div>
+    
 </x-guest-layout>
