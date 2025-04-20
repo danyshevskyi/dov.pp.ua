@@ -1,3 +1,8 @@
+/repo
+/english-cards
+/miles
+/auth
+/analytics
 .env_old
 /.phpunit.cache
 /node_modules
