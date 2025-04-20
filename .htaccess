@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^miles/?$ miles/index.php [L]
+RewriteRule ^scode/?$ scode/index.html [L]
+RewriteRule ^/?$ public/index.html [L]
+#RewriteRule ^(.*)$ public/index.php [QSA,L]
+Options -Indexes
