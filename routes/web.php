@@ -2,8 +2,12 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Analytics\App\Models\Count;
 
 Route::get('/', function () {
+    // DOV Analytics
+    $count = new Count('index', 'all');
+        $count->count();
     return view('index');
 });
 
