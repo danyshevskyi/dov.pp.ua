@@ -77,7 +77,7 @@
             <div class="text-center mx-auto">
             <h1 style="font-size: 40px;">Oleksii Danyshevskyi</h1>
                 </div>
-    <h5 class="text-center"><i>PHP Developer</i></h5>
+    <h5 class="text-center"><i>Web solutions</i></h5>
 </a>   
         </div>
     </div>
@@ -91,7 +91,7 @@
   <a href="https://www.linkedin.com/in/danyshevskyi/" target="_blank" class="text-black">  
     <i class="bi bi-linkedin fs-4 1me-3"></i></a>
         <span class="px-3"></span>
-    <a href="https://github.com/oleksiidan" target="_blank" class="text-black">
+    <a href="https://github.com/danyshevskyi" target="_blank" class="text-black">
         <i class="bi bi-github fs-4"></i>
     </a>
        <br><br>
