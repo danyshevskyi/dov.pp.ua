@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('scodes', function (Blueprint $table) {
             $table->id();
             $table->string('scode');
-            $table->string('text');
-            $table->timestamps();
+            $table->string('error');
+            $table->string('solution');
         });
     }
 
