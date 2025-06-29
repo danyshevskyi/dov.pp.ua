@@ -11,8 +11,13 @@ class ScodeController extends Controller
        
        $objScode = new Scode();
         
-       return $objScode->search($request->scode);          
-          
-        
+       return $objScode->search($request->scode);             
     }
+
+    function getAllScodes() {
+       
+        $objScode = new Scode();
+         
+        return $objScode->getAllScodes();             
+     }
 }

@@ -20,4 +20,19 @@ class Scode extends Model
         
        
     }
+
+    function getAllScodes() {
+        
+        $result = DB::table('scodes')->get();
+
+            // return json_encode([
+            //     'status' => true,
+            //     'data'=> $result,
+            //     'error' => null
+            // ]);
+
+            return $result;
+        
+       
+    }
 }

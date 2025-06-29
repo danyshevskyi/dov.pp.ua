@@ -9,3 +9,5 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('/scode', [ScodeController::class, 'search']);
+
+Route::post('/scode/all', [ScodeController::class, 'getAllScodes']);
