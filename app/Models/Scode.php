@@ -11,11 +11,17 @@ class Scode extends Model
         
         $scodeResult = DB::table('scodes')->where('scode', $scode)->first();
 
+            if ($scodeResult == null) {
+                $status = false;
+            } else {
+                $status = true;
+            };
+        
             return json_encode([
-                'status' => true,
+                'status' => $status,
                 'data'=> $scodeResult,
                 'comments'=>'Test comments',
-                'error' => null
+                'error' => 'Вказаний scode не знайдений ...'
             ]);  
         
        
