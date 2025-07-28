@@ -14,14 +14,17 @@ class Sendemail extends Model
 
         // Get email user
         $email = DB::table('users')->where('id', $user_id)->value('email');
+        
+        // Get name user
+        $name = DB::table('users')->where('id', $user_id)->value('name');
 
         //Get project name
         $project = DB::table('projects')->where('id', $project_id)->value('name');
 
         // Sending notification to email
         $to = "danishevskij@gmail.com";
-        $subject = 'Feedback for '.$project; 
-            $message = "<h2>User ".$email." sent feedback!<br></h2><h3>/".$feedback_text."</h3>";
+        $subject = "Project: ". $project; 
+            $message = "<h3>".$name. " (". $email. ")<br><br>" .$feedback_text. "</h3>";
                 $header = "From: DOV Feedback <admin@dov.pp.ua> \r\n";
                 $header .= "Cc:admin@dov.pp.ua \r\n";
                 $header .= "MIME-Version: 1.0\r\n";
