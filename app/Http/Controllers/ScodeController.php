@@ -5,16 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Scode;
 
-class ScodeController extends Controller
-{
-    function search(Request $request) {
+class ScodeController extends Controller {
+
+   public function search(Request $request) {
        
-       $objScode = new Scode();
+      $scode = new Scode();
         
-       return $objScode->search($request->scode);             
+       return $scode->search($request->scode);
+       
+    
     }
 
-    function getAllScodes() {
+    public function getAllScodes() {
        
         $objScode = new Scode();
          
