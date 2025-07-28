@@ -22,7 +22,7 @@ class ProjectsSeeder extends Seeder
             ],
             [
                 "id" => 2,
-                "name" => "Analytics",
+                "name" => "DOV Analytics",
                 "url" => "https://dov.pp.ua/analytics",
                 "key_name" => "analytics"
             ],
