@@ -10,14 +10,10 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-// Route::post('/scode', [ScodeController::class, 'search']);
-
-// Route::post('/scode/all', [ScodeController::class, 'getAllScodes']);
-
 Route::post('/feedback', [FeedbackController::class, 'create_feedback']);
 
-Route::post('/scode', function(Request $request) {
-    
+// *** Scode project ***
+Route::post('/scode', function(Request $request) { 
     // DOV Analytics
     $count = new Count('scode', 'all');
         $count->count();
@@ -27,7 +23,6 @@ Route::post('/scode', function(Request $request) {
 });
 
 Route::post('/scode/all', function() {
-    
     // DOV Analytics
     $count = new Count('scode', 'all');
         $count->count();
@@ -35,3 +30,13 @@ Route::post('/scode/all', function() {
     $ScodeController = new ScodeController();
         return $ScodeController->getAllScodes();
 });
+
+Route::post('/scode/stacker', function() {
+    // DOV Analytics
+    // $count = new Count('scode', 'all');
+    //     $count->count();
+
+    $ScodeController = new ScodeController();
+        return $ScodeController->getStackerComponent();
+});
+// /*** Scode project ***
