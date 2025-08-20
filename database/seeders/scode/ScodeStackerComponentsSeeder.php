@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 
-class StackerSeeder extends Seeder
+class ScodeStackerComponentsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,16 +16,14 @@ class StackerSeeder extends Seeder
     public function run(): void
     {
 
-        Schema::dropIfExists('stacker');
+        Schema::dropIfExists('scode_stacker_components');
 
-        Schema::create('stacker', function (Blueprint $table) {
+        Schema::create('scode_stacker_components', function (Blueprint $table) {
             $table->id();
             $table->string('component');
             $table->string('name');
             $table->string('location');
         });
-
-
 
         $data = [
                     [
@@ -105,6 +103,6 @@ class StackerSeeder extends Seeder
                     ]
         ];
         
-            DB::table('stacker')->insert($data);
+            DB::table('scode_stacker_components')->insert($data);
     }
 }

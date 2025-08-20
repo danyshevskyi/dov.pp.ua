@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Scode;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -8,26 +8,22 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 
-class ScodeSeeder extends Seeder
+class ScodeListScodesSeeder extends Seeder
 {
-
-
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
 
-        Schema::dropIfExists('scodes');
+        Schema::dropIfExists('scode_list_scodes');
 
-        Schema::create('scodes', function (Blueprint $table) {
+        Schema::create('scode_list_scodes', function (Blueprint $table) {
             $table->id();
             $table->string('scode');
             $table->string('error');
             $table->text('solution');
         });
-
-
 
         $data = [
             [
@@ -455,6 +451,6 @@ class ScodeSeeder extends Seeder
             ]
         ];
 
-        DB::table('scodes')->insert($data);
+        DB::table('scode_list_scodes')->insert($data);
     }
 }

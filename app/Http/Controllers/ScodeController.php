@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Scode;
+use App\Models\Scode\Scode;
 use App\Models\Scode\Stacker;
 
 class ScodeController extends Controller {

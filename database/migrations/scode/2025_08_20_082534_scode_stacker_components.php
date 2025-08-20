@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('scodes', function (Blueprint $table) {
+        Schema::create('scode_stacker_components', function (Blueprint $table) {
             $table->id();
-            $table->string('scode');
-            $table->string('error');
-            $table->string('solution');
+            $table->string('component');
+            $table->string('name');
+            $table->string('location');
         });
     }
 
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('scodes');
+        Schema::dropIfExists('scode_stacker_components');
     }
 };
