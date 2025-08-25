@@ -31,12 +31,12 @@ Route::post('/scode/all', function() {
         return $ScodeController->getAllScodes();
 });
 
-Route::post('/scode/stacker', function() {
+Route::post('/scode/stacker/components', function() {
     // DOV Analytics
     // $count = new Count('scode', 'all');
     //     $count->count();
 
     $ScodeController = new ScodeController();
-        return $ScodeController->getStackerComponent();
+        return $ScodeController->getStackerComponents();
 });
 // /*** Scode project ***

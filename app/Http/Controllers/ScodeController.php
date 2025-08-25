@@ -17,9 +17,9 @@ public function getAllScodes() {
    return $objScode->getAllScodes();             
 }
 
-public function getStackerComponent() {    
+public function getStackerComponents() {    
    $stacker = new Stacker();
-   return $stacker->getStackerComponent();             
+   return $stacker->getStackerComponents();             
 }
 
 }
