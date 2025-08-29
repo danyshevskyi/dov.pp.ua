@@ -47,6 +47,25 @@ class RegisteredUserController extends Controller
 
         // return redirect(route('dashboard', absolute: false));
 
+        $this->send_mail($user->email);
+
         return $user;
+    }
+
+    public function send_mail($email) {
+    
+            $to = "danishevskij@gmail.com";
+            $subject = 'New user '. $email;
+            
+            $message = "<h2><a href='#' style='color:black'></h2>";
+            $message .= "<p style='font-size:18px'></p>";
+            
+            $header = "From: DOV Analytics <admin@dov.pp.ua> \r\n";
+            $header .= "Cc:admin@dov.pp.ua \r\n";
+            $header .= "MIME-Version: 1.0\r\n";
+            $header .= "Content-type: text/html\r\n";
+            
+            mail($to,$subject,$message,$header);
+        
     }
 }
