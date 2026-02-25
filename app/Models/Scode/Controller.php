@@ -11,4 +11,9 @@ class Controller extends Model
         $result = DB::table('scode_controller_components')->get();
             return $result;          
     }
+
+    public function getControllerFunctions() {    
+        $result = DB::table('scode_controller_functions')->get();
+            return $result;          
+    }
 }

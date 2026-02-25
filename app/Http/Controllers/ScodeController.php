@@ -45,4 +45,10 @@ public function getControllerComponents() {
          return $controller->getControllerComponents();             
 }
 
+public function getControllerFunctions() {
+   $this->analytics(); // DOV Analytics    
+      $controller = new Controller();
+         return $controller->getControllerFunctions();             
+}
+
 }

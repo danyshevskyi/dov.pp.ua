@@ -12,3 +12,4 @@ Route::post('/scode/search', [ScodeController::class, 'search']);
 Route::post('/scode/scodes_all', [ScodeController::class, 'getAllScodes']);
 Route::post('/scode/stacker', [ScodeController::class, 'getStackerComponents']);
 Route::post('/scode/controller', [ScodeController::class, 'getControllerComponents']);
+Route::post('/scode/controller_functions', [ScodeController::class, 'getControllerFunctions']);

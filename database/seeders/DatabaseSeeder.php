@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(\Database\Seeders\Scode\ScodeStackerComponentsSeeder::class);
         $this->call(\Database\Seeders\Scode\ScodeListScodesSeeder::class);
         $this->call(\Database\Seeders\Scode\ControllerComponentsSeeder::class);
+        $this->call(\Database\Seeders\Scode\ControllerFunctionsSeeder::class);
     }
 }
