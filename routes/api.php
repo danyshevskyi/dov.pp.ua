@@ -11,3 +11,4 @@ Route::get('/user', function (Request $request) {
 Route::post('/feedback', [FeedbackController::class, 'create_feedback']);
 
 require_once 'scode.php';
+require_once 'analytics.php';
