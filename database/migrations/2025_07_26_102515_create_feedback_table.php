@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
+
+        Schema::dropIfExists('feedback');
+        
         Schema::create('feedback', function (Blueprint $table) {
             $table->id();
             $table->integer('project_id');
-            $table->integer('user_id');
+            $table->integer('user_id')->nullable();
             $table->text('feedback_text');
             $table->timestamp('created_at')->nullable();
         });
