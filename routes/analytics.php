@@ -23,6 +23,5 @@ Route::prefix('analytics/{project}')->group(function () {
             'stacker_functions',
             'controller_scheme',
             'controller_functions'
-
         ]);
 });

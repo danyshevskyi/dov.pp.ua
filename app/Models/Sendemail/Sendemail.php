@@ -22,7 +22,7 @@ class Sendemail extends Model
         // Sending notification to email
         $to = "danishevskij@gmail.com";
         $subject = "Project: ". $project; 
-            $message = "<h3><br>".$feedback_text."</h3>";
+            $message = $feedback_text;
                 $header = "From: DOV Feedback <admin@dov.pp.ua> \r\n";
                 $header .= "Cc:admin@dov.pp.ua \r\n";
                 $header .= "MIME-Version: 1.0\r\n";
