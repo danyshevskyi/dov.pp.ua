@@ -15,4 +15,26 @@ class AnalyticsModel extends Model
             'body' => json_encode($request->all(), JSON_UNESCAPED_UNICODE)
         ]);
     }
+
+
+public function ipExistToday($ip): bool {
+    return true;
+}
+
+public function isAuth() { // return email or null
+    return true;
+}
+ 
+ public function createVisit() {
+ 
+ }
+ 
+ public function updateVisit() {
+ 
+ }
+ 
+ public function createEvent() {
+ 
+}
+
 }
