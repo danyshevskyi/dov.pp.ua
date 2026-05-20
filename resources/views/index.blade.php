@@ -81,36 +81,42 @@
 
 <div class="main container d-flex flex-column align-items-center justify-content-center text-center py-5">
 
-    <h1 class="mb-3">Oleksii Danyshevskyi</h1>
+    <h1 class="mb-4"><a href="https://linkedin.com/in/danyshevskyi" target="_blank" class="text-black text-decoration-none">
+        Oleksii Danyshevskyi <i class="bi bi-linkedin pe-2 text-primary"></i></a></h1>
 
-    <a href="#" id="toggleBtn" class="apple-link mb-4">
-        See What I Built
+    <a href="#" id="toggleBtn" class="apple-link mb-4 1fs-5">
+     
+    <p class="fst-italic" 1style="font-size: 16px"> See What I Built ...</p>
     </a>
 
     <div id="projects" class="projects-wrapper hidden">
 
-    <a class="nav-link text-black" href="https://dov.pp.ua/scode" target=_blank>
+    <a class="nav-link text-black" href="https://scode.pp.ua" target=_blank>
         <div class="card project-card mb-3 p-3">
-            <h5>Scode</h5>
+            <h5 class="fw-bold fs-4">Scode.pp.ua</h5>
             <p class="mb-0">Solutions for ATM service engineers</p>
+            <!-- <p class="mb-0 text-primary fw-bold">scode.pp.ua</p> -->
         </div>
     </a>
     <a class="nav-link text-black" href="https://dov.pp.ua/analytics" target=_blank>
         <div class="card project-card mb-3 p-3">
-            <h5>DOV Analytics</h5>
+            <h5 class="fw-bold">DOV Analytics</h5>
             <p class="mb-0">User experience analytics</p>
+            <p class="mb-0">In progress ...</p>
         </div>
     </a>
     <a class="nav-link text-black" href="https://dov.pp.ua/english-cards" target=_blank>
         <div class="card project-card mb-3 p-3">
-            <h5>English Cards</h5>
+            <h5 class="fw-bold">English Cards</h5>
             <p class="mb-0">Сreate your own cards with words, phrases or sentences</p>
+            <p class="mb-0">In progress ...</p>
         </div>
     </a>
-    <a class="nav-link text-black" href="https://dov.pp.ua/miles" target=_blank>
+    <a class="nav-link text-black" href="https://miles.pp.ua" target=_blank>
         <div class="card project-card mb-3 p-3">
-            <h5>Miles</h5>
+            <h5 class="fw-bold">Miles.pp.ua</h5>
             <p class="mb-0">Control of costs and vehicle distances</p>
+            <!-- <p class="mb-0 text-primary fw-bold">miles.pp.ua</p> -->
         </div>
     </a>
     </div>
@@ -126,11 +132,9 @@
 <div class="d-flex justify-content-center mt-5 1bb">
 
   <div class="mb-4 fixed-bottom 1bb text-center 1bb">
-  <a href="https://linkedin.com/in/danyshevskyi" target="_blank" class="text-black text-decoration-none">
-    <i class="bi bi-linkedin pe-2"></i>I`m on LinkedIn
-    </a>
-       
-   
+  <a href="https://dov.pp.ua" target="_blank" class="text-black text-decoration-none">
+
+    Dov.pp.ua &copy; 2026</a>
     </div>
 </div>
 <!-- /footer -->
@@ -146,8 +150,8 @@
         projects.classList.toggle('hidden');
 
         btn.textContent = projects.classList.contains('show')
-            ? 'Explore Projects'
-            : 'See What I Built';
+            ? ''
+            : 'See What I Built ...';
     });
 </script>
 
