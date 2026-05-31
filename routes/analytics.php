@@ -8,7 +8,7 @@ use App\Http\Controllers\AnalyticsController;
 // http://localhost:8000/api/analytics/{project}/{activity} - api for get analytics
 
 Route::prefix('analytics/{project}')->group(function () {
-    Route::post('{action}', [AnalyticsController::class, 'save_analytics'])
+    Route::post('{action}', [AnalyticsController::class, 'CreateAnalytics'])
         ->whereIn('action', [
             'open_app',
             'menu',

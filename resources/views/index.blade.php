@@ -81,8 +81,7 @@
 
 <div class="main container d-flex flex-column align-items-center justify-content-center text-center py-5">
 
-    <h1 class="mb-4"><a href="https://linkedin.com/in/danyshevskyi" target="_blank" class="text-black text-decoration-none">
-        Oleksii Danyshevskyi <i class="bi bi-linkedin pe-2 text-primary"></i></a></h1>
+    <h1 class="mb-4">Oleksii Danyshevskyi</h1>
 
     <a href="#" id="toggleBtn" class="apple-link mb-4 1fs-5">
      
