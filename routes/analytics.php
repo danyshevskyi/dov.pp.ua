@@ -5,7 +5,7 @@ use App\Http\Controllers\AnalyticsController;
 
 // http://localhost:8000/api - backend for all project
 // http://localhost:8000/api/{project} - backand for project
-// http://localhost:8000/api/analytics/{project}/{activity} - api for get analytics
+// http://localhost:8000/api/analytics/{project}/{action} - api for get analytics
 
 Route::prefix('analytics/{project}')->group(function () {
     Route::post('{action}', [AnalyticsController::class, 'startServices'])

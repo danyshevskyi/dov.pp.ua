@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Analytics\App\Models\Count;
-use App\Models\Analytics\AnalyticsModel;
 use App\Services\Analytics\AnalyticsService;
 use Illuminate\Http\Request;
 
 class AnalyticsController extends Controller {
 
-/** @var array  ip, user_agent, referer */
+/** @var array
+ * ip
+ * user_agent
+ * referer 
+ * action
+ * body
+ * */
 public $request_data = [];
 
 public function __construct() {
@@ -17,19 +21,15 @@ public function __construct() {
    [
       'ip' => request()->ip(),
       'user_agent' => request()->userAgent(),
-      'referer' => request()->headers->get('referer')
+      'referer' => request()->headers->get('referer'),
+      'action'=>request()->segment(4),
+      'body'=>json_encode(request()->all(), JSON_UNESCAPED_UNICODE)
    ];
 }
 
-public function startServices(Request $request) {
-   $AnalyticsService = new AnalyticsService($this->request_data);
-      $AnalyticsService->startServices($request);
-} 
-
-public function CreateAnalytics($project) {
-
-      $AnalyticsModel = new AnalyticsModel();
-         $AnalyticsModel->CreateAnalytics(request());
-}         
+public function startServices() {
+   $AnalyticsService = new AnalyticsService();
+      $AnalyticsService->startServices($this->request_data);
+}       
 
 }

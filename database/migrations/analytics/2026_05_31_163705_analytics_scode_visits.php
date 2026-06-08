@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('analytics_scode_visits', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_visit');
             $table->string('ip')->nullable();
             $table->integer('email')->nullable();
             $table->string('device')->nullable();
@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('isp')->nullable();
             $table->string('referer')->nullable();
             $table->integer('score')->nullable();
-            $table->timestamp('created_at')->nullable();
+            $table->timestamp('date_visit')->nullable();
         });
     }
 
