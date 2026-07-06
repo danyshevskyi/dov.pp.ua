@@ -92,28 +92,26 @@
 
     <a class="nav-link text-black" href="https://scode.pp.ua" target=_blank>
         <div class="card project-card mb-3 p-3">
-            <h5 class="fw-bold fs-4">Scode.pp.ua</h5>
+            <h5 class="fw-bold fs-4">Scode</h5>
             <p class="mb-0">Solutions for ATM service engineers</p>
             <!-- <p class="mb-0 text-primary fw-bold">scode.pp.ua</p> -->
         </div>
     </a>
     <a class="nav-link text-black" href="https://dov.pp.ua/analytics" target=_blank>
         <div class="card project-card mb-3 p-3">
-            <h5 class="fw-bold">DOV Analytics</h5>
+            <h5 class="fw-bold">Web Analytics</h5>
             <p class="mb-0">User experience analytics</p>
-            <p class="mb-0">In progress ...</p>
         </div>
     </a>
-    <a class="nav-link text-black" href="https://dov.pp.ua/english-cards" target=_blank>
+    <a class="nav-link text-black" href="https://english-cards.pp.ua" target=_blank>
         <div class="card project-card mb-3 p-3">
             <h5 class="fw-bold">English Cards</h5>
             <p class="mb-0">Сreate your own cards with words, phrases or sentences</p>
-            <p class="mb-0">In progress ...</p>
         </div>
     </a>
     <a class="nav-link text-black" href="https://miles.pp.ua" target=_blank>
         <div class="card project-card mb-3 p-3">
-            <h5 class="fw-bold">Miles.pp.ua</h5>
+            <h5 class="fw-bold">Miles</h5>
             <p class="mb-0">Control of costs and vehicle distances</p>
             <!-- <p class="mb-0 text-primary fw-bold">miles.pp.ua</p> -->
         </div>
@@ -133,7 +131,7 @@
   <div class="mb-4 fixed-bottom 1bb text-center 1bb">
   <a href="https://dov.pp.ua" target="_blank" class="text-black text-decoration-none">
 
-    Dov.pp.ua &copy; 2026</a>
+    dov.pp.ua &copy; 2026</a>
     </div>
 </div>
 <!-- /footer -->
