@@ -1,14 +1,22 @@
 <?php
 
-use App\Http\Controllers\Feedback\FeedbackController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TokenAuthController;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+// /api/...
 
-Route::post('/feedback', [FeedbackController::class, 'create']);
+// Route::get('/user', function (Request $request) {
+//     return $request->user();
+// })->middleware('auth:sanctum');
 
-require_once 'scode.php';
-require_once 'analytics.php';
+Route::middleware('auth:sanctum')->get('/check_token', function (Request $request) {
+    return response()->json([
+        'status' => true,
+        'user' => $request->user()
+    ]);
+});
+
+Route::post('register', [TokenAuthController::class, 'register']);
+Route::post('/login', [TokenAuthController::class, 'login']);
+Route::post('/logout', [TokenAuthController::class, 'logout']);

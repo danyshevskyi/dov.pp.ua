@@ -32,11 +32,34 @@ class TokenAuthController extends Controller
 
     }
 
-    public function login() {
-        
+    public function login(Request $request)
+    {
+        $data = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required', 'string']
+        ]);
+
+        $user = User::where('email', $data['email'])->first();
+
+        if(!$user || !Hash::check($data['password'], $user->password)) {
+            throw ValidationException::withMessages([
+                'email' => ['Sorry, login or password is wrong!']
+            ]);
+        }
+
+        $token = $user->createToken('api-token')->plainTextToken;
+
+        return response()->json([
+            'user' => $user,
+            'token' => $token
+        ]);
     }
 
-    public function logout() {
-        
+    public function logout(Request $request) {
+        $request->user()->currentAccessToken()->delete();
+
+        return response()->json([
+            'message' => 'You are logout'
+        ]);
     }
 }
