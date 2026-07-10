@@ -21,7 +21,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://localhost:5173', 'https://scode.pp.ua'],
+    'allowed_origins' => ['http://localhost:5173', 'https://scode.pp.ua', 'https://web-analytics.pp.ua'],
 
     'allowed_origins_patterns' => [],
 
