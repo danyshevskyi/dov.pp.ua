@@ -14,7 +14,7 @@ class TokenAuthController extends Controller
         $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'unique:users,email'],
-            'password' => ['required', 'string', 'min:8']
+            'password' => ['required', 'string', 'min:8', 'confirmed']
         ]);
         
         $user = User::create([
