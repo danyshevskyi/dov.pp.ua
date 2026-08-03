@@ -11,7 +11,8 @@ class AnalyticsController extends Controller {
  * ip
  * user_agent
  * referer 
- * action
+ * project
+ * activity
  * body
  * */
 public $request_data = [];
@@ -22,14 +23,23 @@ public function __construct() {
       'ip' => request()->ip(),
       'user_agent' => request()->userAgent(),
       'referer' => request()->headers->get('referer'),
-      'action'=>request()->segment(4),
+      'project'=>request()->segment(3),
+      'activity'=>request()->segment(5),
       'body'=>json_encode(request()->all(), JSON_UNESCAPED_UNICODE)
    ];
 }
 
 public function startServices() {
-   $AnalyticsService = new AnalyticsService();
-      $AnalyticsService->startServices($this->request_data);
-}       
+   $AnalyticsService = new AnalyticsService($this->request_data);
+      $AnalyticsService->startServices();
+}
+
+public function getAnalytics() {
+   
+   if($this->request_data['projet'] == 'total') {
+      
+   }
+
+}
 
 }
