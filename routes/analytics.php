@@ -24,7 +24,7 @@ use App\Http\Controllers\AnalyticsController;
 
 // get analytics
 Route::prefix('analytics/{project}/get')->group(function () {
-    Route::post('{date}', [AnalyticsController::class, 'getAnalytics'])
+    Route::post('{date}', [AnalyticsController::class, 'getServices'])
         ->whereIn('date', [
             'now',
             'yesterday',
@@ -35,7 +35,7 @@ Route::prefix('analytics/{project}/get')->group(function () {
 
 // save analytics
 Route::prefix('analytics/{project}/save')->group(function () {
-    Route::post('{activity}', [AnalyticsController::class, 'startServices'])
+    Route::post('{activity}', [AnalyticsController::class, 'saveServices'])
         ->whereIn('activity', [
             'open_app',
             'menu',

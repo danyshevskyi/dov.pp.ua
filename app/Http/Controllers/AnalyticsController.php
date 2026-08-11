@@ -29,17 +29,16 @@ public function __construct() {
    ];
 }
 
-public function startServices() {
+public function saveServices() {
    $AnalyticsService = new AnalyticsService($this->request_data);
-      $AnalyticsService->startServices();
+      $AnalyticsService->saveAnalytics();
 }
 
-public function getAnalytics() {
-   
-   if($this->request_data['projet'] == 'total') {
-      
-   }
+public function getServices() {
+   $AnalyticsService = new AnalyticsService($this->request_data);
+      $response = $AnalyticsService->getAnalytics();
 
+      return response()->json($response);
 }
 
 }
