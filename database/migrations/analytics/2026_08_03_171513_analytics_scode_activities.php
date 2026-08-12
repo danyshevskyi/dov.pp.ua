@@ -1,5 +1,7 @@
 <?php
 
+// php artisan make:migration name_table --path=/database/migrations/analytics
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

@@ -109,63 +109,62 @@ public function saveAnalytics() {
 }
 
 public function getAnalytics() {
+    $response = ['visits' => []];
 
-    if($this->project == 'total') {
-        
+    if($this->project == 'total')
+    {
         $ProjectsModel = new ProjectsModel();   
             $projects = $ProjectsModel->getProjects();
+
         
         
-        $response = [];
-
-
-
-            // if($projects->key_name == 'scode') {
-            //     foreach($projects as $project) {
-            //         $response[$project->name] = 11;
-            //     }
-            // }
-
-           
-
-            // analytics_scode_visits
-
-                foreach($projects as $project) {
-                    
-
-                    if($project->key_name == "scode") {
-                        $response[$project->name] = $project->key_name;
-
-
-
-
-
-
-                    }
-
-                    
-                }
+        foreach($projects as $project)
+        {
+            if($project->key_name == "scode")
+            {
+                $VisitsModel = new VisitsModel('analytics_'.$project->key_name.'_visits');
+                    $response['visits'][$project->name] = $VisitsModel->getVisitsTotal('today');
             
-        
-        
-        // $total = [
-        //     "Miles" => [],
-        //     "WEB Analytics" => [],
-        //     "DOV Software" => [],
-        //     "English Cards" => [],
-        //     "Scode" => ["Today" => 555, "Reg" => 555, "Online" => 555]
-        // ];
-        // return $total;
+
+                    // "Miles": { today: 123, reg: 57, online: 45 },
+                    $response['total'] = [
+
+                        $project->name => [
+                            'today' => $response['visits'][$project->name]->count(),
+                            'reg'=> $this->visitsReg($response['visits'][$project->name]),
+                            'online'=> $this->visitsOnline($response['visits'][$project->name])
+                        ]
+
+                    ];
+            }       
+        }
 
         return $response;
     }
 }
 
+public function visitsOnline($visits) {
+    $online = 0;
+    foreach($visits as $visit)
+    {
+        if(strtotime($visit->date_visit) >= strtotime('-5 minutes'))
+        {
+            $online ++;
+        }
+    }
+    return $online;
+}
 
-
-
-
-
-
+public function visitsReg($visits) {
+    $reg = 0;
+    foreach($visits as $visit)
+    {
+        if($visit->email)
+        {
+            $reg ++;
+        }
+    }
+    return $reg;
+}
 
 }

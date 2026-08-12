@@ -1,5 +1,7 @@
 <?php
 
+// php artisan make:migration name_table --path=/database/migrations/analytics
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,7 +16,7 @@ return new class extends Migration
         Schema::create('analytics_scode_visits', function (Blueprint $table) {
             $table->id('id_visit');
             $table->string('ip')->nullable();
-            $table->integer('email')->nullable();
+            $table->string('email')->nullable();
             $table->string('device')->nullable();
             $table->string('os')->nullable();
             $table->string('browser')->nullable();
