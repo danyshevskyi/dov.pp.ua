@@ -18,4 +18,8 @@ public function saveActivity($activity_data): void {
     DB::table($this->table)->insert($activity_data);
 }
 
+public function getActivities($id_visit) {
+    return DB::table($this->table)->where('id_visit', $id_visit)->get();
+}
+
 }

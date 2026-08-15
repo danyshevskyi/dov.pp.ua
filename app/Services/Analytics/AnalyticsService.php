@@ -126,6 +126,18 @@ public function getAnalytics() {
                     $response['visits'][$project->name] = $VisitsModel->getVisitsTotal('today');
             
 
+
+                $ActivitiesModel = new ActivitiesModel('analytics_'.$project->key_name.'_activities');
+
+
+                    foreach($response['visits'][$project->name] as $visit) {
+                        $visit->activities = $ActivitiesModel->getActivities($visit->id_visit);
+                    }
+
+
+
+
+
                     // "Miles": { today: 123, reg: 57, online: 45 },
                     $response['total'] = [
 
@@ -137,6 +149,10 @@ public function getAnalytics() {
 
                     ];
             }       
+        
+        
+        
+        
         }
 
         return $response;
