@@ -23,7 +23,9 @@ public function __construct() {
       'ip' => request()->ip(),
       'user_agent' => request()->userAgent(),
       'referer' => request()->headers->get('referer'),
-      'project'=>request()->segment(3),
+      'project'=>request()->input('project'),
+      'period'=>request()->input('period'),
+      'key'=>request()->input('key'),
       'activity'=>request()->segment(5),
       'body'=>json_encode(request()->all(), JSON_UNESCAPED_UNICODE)
    ];

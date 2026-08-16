@@ -60,20 +60,12 @@ public function getVisits($period) {
     }
 }
 
-public function getVisitsTotal($period) { // $period = 'today'
-    $response = [];
+// public function getVisitsTotal($period) { // $period = 'today'
+//     $response = [];
 
-    $today_visit = $this->getVisits($period);
+//     $today_visit = $this->getVisits($period);
 
-    return $today_visit;
+//     return $today_visit;
+// }
+
 }
-
-}
-
-// const data = {
-//     "Miles": { today: 123, reg: 57, online: 45 },
-//     "DOV Analytics": { today: 123, reg: 57, online: 45 },
-//     "DOV Software": { today: 123, reg: 57, online: 45 },
-//     "English Cards": { today: 123, reg: 57, online: 45 },
-//     "Scode": { today: 123, reg: 57, online: 45 },
-//   };

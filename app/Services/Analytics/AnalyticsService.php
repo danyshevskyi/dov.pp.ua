@@ -38,6 +38,7 @@ class AnalyticsService {
     public $activity_data = [];
     
     public $project = null;
+    public $period = null;
 
     public function __construct($request_data) {
     // writing array visit_data
@@ -79,8 +80,11 @@ class AnalyticsService {
             'body' => $request_data['body'],
             'date_activity' => now()
         ]);
-    // writing variable project
+    // from data post
+        $this->key = $request_data['key'];
         $this->project = $request_data['project'];
+        $this->period = $request_data['period'];
+        
     }
 
 public function saveAnalytics() {
@@ -108,55 +112,69 @@ public function saveAnalytics() {
     }
 }
 
+// project: total, scode, miles, dov
+// period: today, yesterday, current_month, last_month
 public function getAnalytics() {
-    $response = ['visits' => []];
 
-    if($this->project == 'total')
+
+
+
+    // $response = ['visits' => []];
+
+    if($this->key == 'dashboard')
     {
+        $response = null;
+
         $ProjectsModel = new ProjectsModel();   
             $projects = $ProjectsModel->getProjects();
-
-        
         
         foreach($projects as $project)
         {
             if($project->key_name == "scode")
             {
                 $VisitsModel = new VisitsModel('analytics_'.$project->key_name.'_visits');
-                    $response['visits'][$project->name] = $VisitsModel->getVisitsTotal('today');
+                    $visits = $VisitsModel->getVisits('today');
             
+                // $ActivitiesModel = new ActivitiesModel('analytics_'.$project->key_name.'_activities');
 
+                    // foreach($response['visits'][$project->name] as $visit) {
+                    //     $visit->activities = $ActivitiesModel->getActivities($visit->id_visit);
+                    // }
 
-                $ActivitiesModel = new ActivitiesModel('analytics_'.$project->key_name.'_activities');
+                    
+                    // $response['total'] = [
 
+                    //     $project->name => [
+                    //         'today' => $response['visits'][$project->name]->count(),
+                    //         'reg'=> $this->visitsReg($response['visits'][$project->name]),
+                    //         'online'=> $this->visitsOnline($response['visits'][$project->name])
+                    //     ]
 
-                    foreach($response['visits'][$project->name] as $visit) {
-                        $visit->activities = $ActivitiesModel->getActivities($visit->id_visit);
-                    }
-
-
-
-
-
-                    // "Miles": { today: 123, reg: 57, online: 45 },
-                    $response['total'] = [
-
-                        $project->name => [
-                            'today' => $response['visits'][$project->name]->count(),
-                            'reg'=> $this->visitsReg($response['visits'][$project->name]),
-                            'online'=> $this->visitsOnline($response['visits'][$project->name])
-                        ]
-
+                    // ];
+                    
+                    $response[$project->name] = [
+                            'today' => $visits->count(),
+                            'reg'=> $this->visitsReg($visits),
+                            'online'=> $this->visitsOnline($visits)
                     ];
             }       
-        
-        
-        
-        
         }
-
-        return $response;
+ 
     }
+    elseif($this->key == 'details')
+    {
+        if($this->project == "scode")
+        {
+
+
+            $VisitsModel = new VisitsModel('analytics_'.$this->project.'_visits');
+                $visits = $VisitsModel->getVisits($this->period);
+
+                $response = $visits;
+        }
+    }   
+
+    return $response;
 }
 
 public function visitsOnline($visits) {
@@ -184,3 +202,10 @@ public function visitsReg($visits) {
 }
 
 }
+
+// {
+//     project: {},
+//     total: {},
+//     visits: {}
+// }
+

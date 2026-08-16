@@ -23,15 +23,19 @@ use App\Http\Controllers\AnalyticsController;
 // });
 
 // get analytics
-Route::prefix('analytics/{project}/get')->group(function () {
-    Route::post('{date}', [AnalyticsController::class, 'getServices'])
-        ->whereIn('date', [
-            'now',
-            'yesterday',
-            'current_month',
-            'last_month'   
-        ]);
-});
+// Route::prefix('analytics/{project}/get')->group(function () {
+//     Route::post('{date}', [AnalyticsController::class, 'getServices'])
+//         ->whereIn('date', [
+//             'now',
+//             'yesterday',
+//             'current_month',
+//             'last_month'   
+//         ]);
+// });
+
+// get analytics
+Route::post('analytics/get', [AnalyticsController::class, 'getServices']);
+
 
 // save analytics
 Route::prefix('analytics/{project}/save')->group(function () {
