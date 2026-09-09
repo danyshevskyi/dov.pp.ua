@@ -123,10 +123,10 @@ public function getAnalytics() {
 
     if($this->key == 'dashboard')
     {
-        $response = null;
+        $response = [];
 
         $ProjectsModel = new ProjectsModel();   
-            $projects = $ProjectsModel->getProjects();
+            $projects = $ProjectsModel->getProject('all');
         
         foreach($projects as $project)
         {
@@ -151,12 +151,14 @@ public function getAnalytics() {
                     //     ]
 
                     // ];
+
+                    $response[$project->name] = $this->visitsTotal($visits);
                     
-                    $response[$project->name] = [
-                            'today' => $visits->count(),
-                            'reg'=> $this->visitsReg($visits),
-                            'online'=> $this->visitsOnline($visits)
-                    ];
+                    //  [
+                    //         'today' => $visits->count(),
+                    //         'reg'=> $this->visitsReg($visits),
+                    //         'online'=> $this->visitsOnline($visits)
+                    // ];
             }       
         }
  
@@ -166,16 +168,22 @@ public function getAnalytics() {
         if($this->project == "scode")
         {
 
+            $ProjectsModel = new ProjectsModel();
+                $response['project'] = $ProjectsModel->getProject($this->project);
 
             $VisitsModel = new VisitsModel('analytics_'.$this->project.'_visits');
-                $visits = $VisitsModel->getVisits($this->period);
+                $response['visits'] = $VisitsModel->getVisits($this->period);
 
-                $response = $visits;
+                $response['total'] = $this->visitsTotal($response['visits']);
+
+                // $response = $visits;
         }
     }   
 
     return $response;
 }
+
+// auxiliary functions
 
 public function visitsOnline($visits) {
     $online = 0;
@@ -201,11 +209,12 @@ public function visitsReg($visits) {
     return $reg;
 }
 
+public function visitsTotal($visits) {
+    return [
+            'today' => $visits->count(),
+            'reg'=> $this->visitsReg($visits),
+            'online'=> $this->visitsOnline($visits)
+    ];
 }
 
-// {
-//     project: {},
-//     total: {},
-//     visits: {}
-// }
-
+}

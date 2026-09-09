@@ -56,7 +56,67 @@ public function isIpExistToday($ip) {
 public function getVisits($period) {
     if($period == 'today')
     {
-        return DB::table($this->table)->whereDate('date_visit', today())->get();
+        return DB::table($this->table)
+            ->selectRaw("
+            id_visit,
+            ip,
+            email,
+            device,
+            os,
+            browser,
+            country,
+            region,
+            city,
+            lang,
+            latitude,
+            longitude,
+            isp,
+            referer,
+            score,
+            TIME_FORMAT(date_visit, '%H:%i') as date_visit
+            ")
+            ->whereDate('date_visit', now())
+            ->orderByDesc('date_visit')
+            ->get();
+    }
+    elseif($period == 'yesterday')
+    {
+        return DB::table($this->table)
+        ->selectRaw("
+        id_visit,
+        ip,
+        email,
+        device,
+        os,
+        browser,
+        country,
+        region,
+        city,
+        lang,
+        latitude,
+        longitude,
+        isp,
+        referer,
+        score,
+        TIME_FORMAT(date_visit, '%H:%i') as date_visit
+        ")
+        ->whereDate('date_visit', now()->subDay())
+        ->orderByDesc('date_visit')
+        ->get();
+    } elseif ($period == 'current_month')
+    {
+        return DB::table($this->table)
+        ->whereMonth('date_visit', now()->month)
+        ->whereYear('date_visit', now()->year)
+        ->orderByDesc('date_visit')
+        ->get();
+    } elseif ($period == 'last_month')
+    {
+        return DB::table($this->table)
+        ->whereMonth('date_visit', now()->subMonth()->month)
+        ->whereYear('date_visit', now()->subMonth()->year)
+        ->orderByDesc('date_visit')
+        ->get();
     }
 }
 
