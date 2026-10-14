@@ -8,3 +8,5 @@ Route::post('/scode/scode_all', [ScodeController::class, 'getAllScodes']);
 Route::post('/scode/stacker', [ScodeController::class, 'getStackerComponents']);
 Route::post('/scode/controller', [ScodeController::class, 'getControllerComponents']);
 Route::post('/scode/controller_functions', [ScodeController::class, 'getControllerFunctions']);
+
+Route::post('/scode', [ScodeController::class, 'ScodeController']);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\Analytics\AnalyticsService;
+use App\Services\Analytics\GetService;
 use Illuminate\Http\Request;
 
 class AnalyticsController extends Controller {
@@ -23,11 +24,14 @@ public function __construct() {
       'ip' => request()->ip(),
       'user_agent' => request()->userAgent(),
       'referer' => request()->headers->get('referer'),
-      'project'=>request()->input('project'),
+      // 'project'=>request()->input('project'),
+      'project'=>request()->segment(2),
       'period'=>request()->input('period'),
       'key'=>request()->input('key'),
-      'activity'=>request()->segment(5),
-      'body'=>json_encode(request()->all(), JSON_UNESCAPED_UNICODE)
+      // 'activity'=>request('request'),
+      'action'=>request('action'),
+      'is_action'=>request('is_action'),
+      'body'=>request('scode')
    ];
 }
 
@@ -37,8 +41,8 @@ public function saveServices() {
 }
 
 public function getServices() {
-   $AnalyticsService = new AnalyticsService($this->request_data);
-      $response = $AnalyticsService->getAnalytics();
+   $GetService = new GetService($this->request_data);
+      $response = $GetService->getAnalytics();
 
       return response()->json($response);
 }

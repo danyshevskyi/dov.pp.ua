@@ -2,13 +2,27 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AnalyticsController;
+use App\Http\Controllers\Analytics\GetController;
 
 // http://localhost:8000/api - backend for all project
 // http://localhost:8000/api/{project} - backand for project
 // http://localhost:8000/api/analytics/{project}/{action} - api for get analytics
 
+
+
 // https://dov.pp.ua/api/analytics/{project}/{action}/{activity} - save analytics (visits and activity)
 // https://dov.pp.ua/api/analytics/miles/save/open_app
+
+
+
+
+
+// new
+// https://dov.pp.ua/api/analytics/get
+// https://dov.pp.ua/api/analytics/save
+
+
+
 
 // https://dov.pp.ua/api/analytics/scode/open_app
 
@@ -17,6 +31,8 @@ use App\Http\Controllers\AnalyticsController;
 // https://dov.pp.ua/api/analytics/miles/get/now
 
 // https://dov.pp.ua/api/analytics/total/get/now
+
+
 
 // Route::prefix('analytics/{project}')->group(function () {
 //     Route::post('now', [AnalyticsController::class, 'analyticsServices']);
@@ -33,8 +49,9 @@ use App\Http\Controllers\AnalyticsController;
 //         ]);
 // });
 
+
 // get analytics
-Route::post('analytics/get', [AnalyticsController::class, 'getServices']);
+Route::post('analytics/get', [GetController::class, 'getServices']);
 
 
 // save analytics
