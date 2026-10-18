@@ -42,8 +42,8 @@ public function getControllerFunctions() {
 public function ScodeController() {
 
    // Save analytics
-   $AnalyticsController = new AnalyticsController();
-         $AnalyticsController->saveServices();
+   // $AnalyticsController = new AnalyticsController();
+   //       $AnalyticsController->saveServices();
    
    if($this->action == 'scode_search')
    {

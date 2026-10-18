@@ -33,15 +33,15 @@ class AnalyticsService
 
     /** @var array
      * id_visit
-     * action
-     * data_action
-     * date_action
+     * action_name
+     * action_data
+     * action_date
      */
     public $action_data = [];
 
     public $project = null;
     public $period = null;
-    public $isAction = null;
+    public $isActionSave = null;
 
     public function __construct($request_data) {
         // writing array visit_data
@@ -79,16 +79,16 @@ class AnalyticsService
         // writing array action_data
             $this->action_data = array_merge($this->action_data, [
                 'id_visit' => null,
-                'action' => $request_data['action'],
-                'data_action' => $request_data['body'],
-                'date_action' => now()
+                'action_name' => $request_data['action_name'],
+                'action_data' => $request_data['action_data'],
+                'action_date' => now()
             ]);
 
         // data from post and get
             $this->key = $request_data['key'];
             $this->project = $request_data['project'];
             $this->period = $request_data['period'];
-            $this->isAction = $request_data['is_action'];
+            $this->isActionSave = $request_data['is_action_save'];
     }
 
     public function saveAnalytics() {
@@ -110,7 +110,7 @@ class AnalyticsService
         }
         
         // Don't save action
-        if($this->isAction) {
+        if($this->isActionSave) {
             $ActionsModel->saveAction($this->action_data);
         }
     }

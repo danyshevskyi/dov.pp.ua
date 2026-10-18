@@ -10,7 +10,7 @@ class AnalyticsScodeVisits extends Model
 
     public function activities() {
         return $this->hasMany(AnalyticsScodeActions::class, 'id_visit', 'id_visit')
-        ->select('id_visit', 'action', 'data_action');
+        ->select('id_visit', 'action_name', 'action_data');
     }
 
     public function getVisits($period) {

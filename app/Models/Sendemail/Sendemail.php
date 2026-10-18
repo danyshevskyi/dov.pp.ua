@@ -17,7 +17,7 @@ class Sendemail extends Model
         // $name = DB::table('users')->where('id', $user_id)->value('name');
 
         //Get project name
-        $project = DB::table('projects')->where('id', $project_id)->value('name');
+        $project = DB::table('analytics_projects')->where('key_projects', $project_id)->value('name');
 
         // Sending notification to email
         $to = "danishevskij@gmail.com";

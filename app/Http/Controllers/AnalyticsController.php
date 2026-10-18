@@ -40,11 +40,11 @@ public function saveServices() {
       $AnalyticsService->saveAnalytics();
 }
 
-public function getServices() {
-   $GetService = new GetService($this->request_data);
-      $response = $GetService->getAnalytics();
+// public function getServices() {
+//    $GetService = new GetService($this->request_data);
+//       $response = $GetService->getAnalytics();
 
-      return response()->json($response);
-}
+//       return response()->json($response);
+// }
 
 }

@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AnalyticsController;
+// use App\Http\Controllers\AnalyticsController;
 use App\Http\Controllers\Analytics\GetController;
+use App\Http\Controllers\Analytics\SaveController;
 
 // http://localhost:8000/api - backend for all project
 // http://localhost:8000/api/{project} - backand for project
@@ -53,23 +54,25 @@ use App\Http\Controllers\Analytics\GetController;
 // get analytics
 Route::post('analytics/get', [GetController::class, 'getServices']);
 
+Route::post('analytics/save', [SaveController::class, 'saveServices']);
 
 // save analytics
-Route::prefix('analytics/{project}/save')->group(function () {
-    Route::post('{activity}', [AnalyticsController::class, 'saveServices'])
-        ->whereIn('activity', [
-            'open_app',
-            'menu',
-            'add_desktop',
-            'about',
-            'donats',
-            'footer',
-            'feedback',
-            'scode_all',
-            'scode_search',
-            'stacker_scheme',
-            'stacker_functions',
-            'controller_scheme',
-            'controller_functions'
-        ]);
-});
+// Route::prefix('analytics/{project}/save')->group(function () {
+//     Route::post('{activity}', [AnalyticsController::class, 'saveServices'])
+//         ->whereIn('activity', [
+//             'open_app',
+//             'menu',
+//             'add_desktop',
+//             'about',
+//             'donats',
+//             'footer',
+//             'feedback',
+//             'scode_all',
+//             'scode_search',
+//             'stacker_scheme',
+//             'stacker_functions',
+//             'controller_scheme',
+//             'controller_functions'
+//         ]);
+// });
+
