@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('analytics_scode_actions', function(Blueprint $table) {
             $table->id('id_action');
             $table->integer('id_visit')->nullable();
-            $table->string('action')->nullable();
-            $table->string('data_action')->nullable();
-            $table->timestamp('date_action')->nullable();    
+            $table->string('action_name')->nullable();
+            $table->text('action_data')->nullable();
+            $table->timestamp('action_date')->nullable();    
         });
     }
 
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('analytics_scode_action');
+        Schema::dropIfExists('analytics_scode_actions');
     }
 };

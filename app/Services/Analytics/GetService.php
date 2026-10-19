@@ -30,29 +30,26 @@ class GetService
             
             foreach($projects as $project)
             {
-                if($project->key_name == "scode")
-                {
-                    $VisitsModel = new AnalyticsScodeVisits();
-                        $visits = $VisitsModel->getVisits('today');
+                    $nameVisitsModal = 'App\\Models\\Analytics\\Analytics'.ucfirst($project->key_name).'Visits';
+                        $VisitsModel = new $nameVisitsModal();
+                            $visits = $VisitsModel->getVisits('today');
 
-                        $response[$project->name] = $this->visitsTotal($visits);
-                }       
+                    $response[$project->name] = $this->visitsTotal($visits);
+                        $response[$project->name]['key_project'] = $project->key_name;      
             }
     
         }
         elseif($this->key == 'details')
         {
-            if($this->project == "scode")
-            {
+            $ProjectsModel = new ProjectsModel();
+                $response['project'] = $ProjectsModel->getProject($this->project);
 
-                $ProjectsModel = new ProjectsModel();
-                    $response['project'] = $ProjectsModel->getProject($this->project);
-
-                $AnalyticsScodeVisits = new AnalyticsScodeVisits();
-                    $response['visits'] = $AnalyticsScodeVisits->getVisits($this->period);
-                
+            
+                $nameVisitsModal = 'App\\Models\\Analytics\\Analytics'.ucfirst($this->project).'Visits';
+                    $VisitsModal = new $nameVisitsModal();
+                        $response['visits'] = $VisitsModal->getVisits($this->period);
+            
                 $response['total'] = $this->visitsTotal($response['visits']);              
-            }
         }   
 
         return $response;

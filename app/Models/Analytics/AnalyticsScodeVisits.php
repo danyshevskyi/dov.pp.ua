@@ -3,10 +3,12 @@
 namespace App\Models\Analytics;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class AnalyticsScodeVisits extends Model
 {
     protected $primaryKey = 'id_visit';
+    protected $table = 'analytics_scode_visits';
 
     public function activities() {
         return $this->hasMany(AnalyticsScodeActions::class, 'id_visit', 'id_visit')
@@ -84,4 +86,26 @@ class AnalyticsScodeVisits extends Model
             ->get();
         }
     }
+
+    /** @return array visit in */
+    public function isIpExistToday($ip) {
+        $visit_in = DB::table($this->table)
+                ->whereDate('date_visit', now())
+                ->where('ip', $ip)
+                ->first();
+        return $visit_in;
+    }
+
+    public function updateVisit($visit_in, $visit_data) {  
+        $visit_data['score'] = $visit_in->score + 1;
+        DB::table($this->table)
+                ->where('id_visit', $visit_in->id_visit)
+                ->update($visit_data);
+    }
+
+    public function saveVisit($visit_data) {
+        $id_visit = DB::table($this->table)->insertGetId($visit_data);
+            return $id_visit;
+    }
+
 }

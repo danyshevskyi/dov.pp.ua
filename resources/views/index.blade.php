@@ -150,6 +150,36 @@
             ? ''
             : 'See What I Built ...';
     });
+
+async function sendAction(action_name, action_data, is_action_save)
+{
+    fetch('https://dov.pp.ua/api/analytics/save', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        // Если запрос идет на этот же домен (ваше приложение Laravel), 
+        // обязательно добавьте CSRF-токен:
+        // 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    },
+    body: JSON.stringify({
+        action_name: action_name,
+        action_data: action_data,
+        is_action_save: is_action_save,
+        project: 'dov'
+    })
+})
+.then(response => {
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    return response.json();
+})
+.catch((error) => {
+    console.log(error);
+});
+}
+
+sendAction('open_app', null, false);
 </script>
 
 </body>

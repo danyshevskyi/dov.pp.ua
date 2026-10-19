@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Analytics;
 
-use App\Services\Analytics\AnalyticsService;
+use App\Services\Analytics\SaveService;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class SaveController extends Controller
 {
 
-/** @var array
+   /** @var array
  * ip
  * user_agent
  * referer 
@@ -36,7 +36,25 @@ public function __construct() {
 }
 
 public function saveServices() {
-   $AnalyticsService = new AnalyticsService($this->request_data);
+   try {
+      $AnalyticsService = new SaveService($this->request_data);
       $AnalyticsService->saveAnalytics();
+
+      return response()->json([
+          'success' => true,
+          'message' => 'Analytics saved successfully'
+      ], 200);
+
+  } catch (\Throwable $e) {
+      report($e);
+
+      return response()->json([
+          'success' => false,
+          'message' => 'Server error',
+          'error' => config('app.debug')
+              ? $e->getMessage()
+              : null,
+      ], 500);
+}
 }
 }

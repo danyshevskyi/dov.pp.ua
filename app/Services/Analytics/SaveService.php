@@ -2,16 +2,12 @@
 
 namespace App\Services\Analytics;
 
-use App\Models\Analytics\ActionsModel;
-use App\Models\Analytics\VisitsModel;
 use App\Models\Analytics\ProjectsModel;
 use \Kudashevs\AcceptLanguage\AcceptLanguage;
 use App\Services\Analytics\IpInfo;
 use App\Services\Analytics\UserAgentParser;
 
-// use App\Models\Analytics\AnalyticsScodeVisits;
-
-class AnalyticsService
+class SaveService
 {
     /** @var array  
      * ip
@@ -41,7 +37,7 @@ class AnalyticsService
 
     public $project = null;
     public $period = null;
-    public $isAction = null;
+    public $is_action_save = null;
 
     public function __construct($request_data) {
         // writing array visit_data
@@ -79,41 +75,51 @@ class AnalyticsService
         // writing array action_data
             $this->action_data = array_merge($this->action_data, [
                 'id_visit' => null,
-                'action' => $request_data['action'],
-                'data_action' => $request_data['body'],
-                'date_action' => now()
+                'action_name' => $request_data['action_name'],
+                'action_data' => $request_data['action_data'],
+                'action_date' => now()
             ]);
 
         // data from post and get
             $this->key = $request_data['key'];
             $this->project = $request_data['project'];
             $this->period = $request_data['period'];
-            $this->isAction = $request_data['is_action'];
+            $this->is_action_save = $request_data['is_action_save'];
     }
 
     public function saveAnalytics() {
 
-        $ActionsModel = new ActionsModel('analytics_'.$this->project.'_actions');
-            $visitsModel = new VisitsModel('analytics_'.$this->project.'_visits');
+        $nameActionsModel = 'App\\Models\\Analytics\\Analytics'.ucfirst($this->project).'Actions';
+            $nameVisitsModal = 'App\\Models\\Analytics\\Analytics'.ucfirst($this->project).'Visits';
 
-            $visit_in = $visitsModel->isIpExistToday($this->visit_data['ip']);
-    
+        $ActionsModel = new $nameActionsModel();
+            $VisitsModel = new $nameVisitsModal();
+
+        $visit_in = $VisitsModel->isIpExistToday($this->visit_data['ip']);
+
         if(filled($visit_in))
         {
             $this->action_data['id_visit'] = $visit_in->id_visit;
-                $visitsModel->updateVisit($visit_in, $this->visit_data);     
+                $VisitsModel->updateVisit($visit_in, $this->visit_data);     
         }
         else
         {
-            $id_visit = $visitsModel->saveVisit($this->visit_data);
+            $id_visit = $VisitsModel->saveVisit($this->visit_data);
                 $this->action_data['id_visit'] = $id_visit;
         }
         
         // Don't save action
-        if($this->isAction) {
+        if($this->is_action_save) {
             $ActionsModel->saveAction($this->action_data);
         }
+
+
     }
+
+
+
+
+
 
     // project: total, scode, miles, dov
     // period: today, yesterday, current_month, last_month
@@ -156,8 +162,13 @@ class AnalyticsService
         return $response;
     }
 
-    // auxiliary functions
 
+
+
+
+
+
+    // auxiliary functions
     public function visitsOnline($visits) {
         $online = 0;
         foreach($visits as $visit)
