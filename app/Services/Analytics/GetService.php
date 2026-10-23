@@ -2,8 +2,8 @@
 
 namespace App\Services\Analytics;
 
-use App\Models\Analytics\AnalyticsScodeActions;
-use App\Models\Analytics\AnalyticsScodeVisits;
+// use App\Models\Analytics\AnalyticsScodeActions;
+// use App\Models\Analytics\AnalyticsScodeVisits;
 use App\Models\Analytics\ProjectsModel;
 
 class GetService
@@ -35,7 +35,7 @@ class GetService
                             $visits = $VisitsModel->getVisits('today');
 
                     $response[$project->name] = $this->visitsTotal($visits);
-                        $response[$project->name]['key_project'] = $project->key_name;      
+                        $response[$project->name]['key_project'] = $project->key_name;
             }
     
         }
