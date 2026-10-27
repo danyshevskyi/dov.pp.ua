@@ -5,7 +5,6 @@
 namespace App\Models\Analytics;
 
 use Illuminate\Database\Eloquent\Model;
-
 use App\Models\Analytics\Traits\VisitTrait;
 
 class AnalyticsMilesVisits extends Model
